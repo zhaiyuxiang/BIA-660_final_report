@@ -87,3 +87,4 @@ while(page < 21):
 # Wait for browsing
     time.sleep(random.randint(1,3))
     page +=1;
+
