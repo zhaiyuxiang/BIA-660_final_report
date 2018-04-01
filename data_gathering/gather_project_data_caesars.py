@@ -76,9 +76,13 @@ while(page < 21):
         print("POSITIVE REVIEW:", positive)
         print("***************************")
 
+        if page == 21:
+            break;
+
 
 
     next_page = driver.find_element_by_xpath('//*[@id="review_next_page_link"]').click()
+
 
 # Wait for browsing
     time.sleep(random.randint(1,3))
