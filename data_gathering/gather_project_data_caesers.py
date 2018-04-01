@@ -19,44 +19,67 @@ driver.get(url)
 Scraping Data from the site
 
 """
-page = 0
-while (page < 21):
-    count = 1
-    while (count < 76):
 
-        # Rating
-        rating_reviews = driver.find_elements_by_xpath(
-            '//*[@id="review_list_page_container"]/ul/li[{}]/div[4]/div/div[1]/div[1]'.format(count))
+
+page=0
+while(page < 21):
+    count=1
+    while(count<76):
+
+        #Rating by reviewer
+        rating_reviews = driver.find_elements_by_xpath('//*[@id="review_list_page_container"]/ul/li[{}]/div[4]/div/div[1]/div[1]'.format(count))
         rating = [x.text for x in rating_reviews]
         if not rating:
             break;
 
-            # Subject Reviews
 
-        subject_reviews = driver.find_elements_by_xpath('//*[@id="review_list_page_container"]/ul/li[{}]/div[4]/div/div[1]/div[2]'.format(count))
-        subject = [x.text for x in subject_reviews]
+        #overall of Review
+        overall_reviews = driver.find_elements_by_xpath('//*[@id="review_list_page_container"]/ul/li[{}]/div[4]/div/div[1]/div[2]'.format(count))
+        overall = [x.text for x in overall_reviews]
 
-        # Negative Reviews
+
+        #Negative Reviews
         negative_reviews = driver.find_elements_by_xpath('//*[@id="review_list_page_container"]/ul/li[{}]/div[4]/div/div[2]/p[1]'.format(count))
         negative = [x.text for x in negative_reviews]
 
-        # Positive Reviews
+
+        #Positive Reviews
         positive_reviews = driver.find_elements_by_xpath('//*[@id="review_list_page_container"]/ul/li[{}]/div[4]/div/div[2]/p[2]'.format(count))
         positive = [x.text for x in positive_reviews]
 
-        count = count + 1
+
+        #Tags for Reviewers
+        tags_reviews = driver.find_elements_by_xpath('//*[@id="review_list_page_container"]/ul/li[{}]/div[4]/div/ul'.format(count))
+        tags = [x.text for x in tags_reviews]
+
+
+        #Country of Reviewers
+        country_reviews = driver.find_elements_by_xpath('//*[@id="review_list_page_container"]/ul/li[{}]/div[3]/span/span[2]'.format(count))
+        country = [x.text for x in country_reviews]
+
+
+        #Date of Review
+        date_reviews = driver.find_elements_by_xpath('//*[@id="review_list_page_container"]/ul/li[{}]/p'.format(count))
+        date = [x.text for x in date_reviews]
+
+
+        count=count+1
 
         # Print the scraped data
 
-        print("RATING:", rating)
-        print("HEADER:", subject)
-        print("NEGATIVE REVIEW:", negative)
+        print("OVERALL_Review:", overall)
+        print("Date_of_Review:", date)
+        print("Nationality:", country)
+        print("RATING:",rating)
+        print("Tags:", tags)
+        print("NEGATIVE REVIEW:",negative)
         print("POSITIVE REVIEW:", positive)
         print("***************************")
 
+
+
     next_page = driver.find_element_by_xpath('//*[@id="review_next_page_link"]').click()
 
-    # Wait for browsing
-    time.sleep(random.randint(1, 3))
-    print("Next")
-    page += 1;
+# Wait for browsing
+    time.sleep(random.randint(1,3))
+    page +=1;
