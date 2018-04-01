@@ -30,7 +30,9 @@ while (page < 21):
         rating = [x.text for x in rating_reviews]
         if not rating:
             break;
+
             # Subject Reviews
+
         subject_reviews = driver.find_elements_by_xpath('//*[@id="review_list_page_container"]/ul/li[{}]/div[4]/div/div[1]/div[2]'.format(count))
         subject = [x.text for x in subject_reviews]
 
