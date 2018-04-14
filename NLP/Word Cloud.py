@@ -34,31 +34,52 @@ stopwords.add("made")
 #if extra_stopwords is not None:
 #    [stopwords.add(word) for word in extra_stopwords]
 
-data_Venetian_pos = pd.read_csv("C:/Users/Nitin/Desktop/data_gathering/The_Venetian_pos_review.csv")
-data_Caesars_pos = pd.read_csv("C:/Users/Nitin/Desktop/data_gathering/The_Venetian_pos_review.csv")
-data_Wynn_pos = pd.read_csv("C:/Users/Nitin/Desktop/data_gathering/wynn_pos_reviews.csv")
+data_Venetian_allreview = pd.read_csv("C:/Users/Nitin/PycharmProjects/BIA660D_Group_6_Project/data_gathering/The_Venetian Resort-Hotel-Casino.csv")
+data_Caesars_allreview = pd.read_csv("C:/Users/Nitin/PycharmProjects/BIA660D_Group_6_Project/data_gathering/Caesar_palace_overall.csv")
+data_Wynn_allreview = pd.read_csv("C:/Users/Nitin/PycharmProjects/BIA660D_Group_6_Project/data_gathering/wynn_overall_data.csv")
 
 
 
-wordcloud_Venetian_pos = WordCloud(
+wordcloud_Venetian_allreview = WordCloud(
                           background_color='white',
                           stopwords=stopwords,
                           max_words=200,
-                          max_font_size=40, 
+                          max_font_size=40,
                           random_state=42,
-                         ).generate(str(data['pos_review']))
+                         ).generate(str(data_Venetian_allreview['Overall_review']))
+
+wordcloud_Caesars_allreview = WordCloud(
+                          background_color='white',
+                          stopwords=stopwords,
+                          max_words=200,
+                          max_font_size=40,
+                          random_state=42,
+                         ).generate(str(data_Caesars_allreview['Overall_review']))
+
+wordcloud_Wynn_allreview = WordCloud(
+                          background_color='white',
+                          stopwords=stopwords,
+                          max_words=200,
+                          max_font_size=40,
+                          random_state=42,
+                         ).generate(str(data_Wynn_allreview['Topic']))
 
 
 
 
-print(wordcloud_Venetian_pos)
+print(wordcloud_Venetian_allreview)
+print(wordcloud_Caesars_allreview)
+print(wordcloud_Wynn_allreview)
 fig = plt.figure(1)
-plt.imshow(wordcloud_Venetian_pos)
+plt.imshow(wordcloud_Venetian_allreview)
+plt.imshow(wordcloud_Caesars_allreview)
+plt.imshow(wordcloud_Wynn_allreview)
+
 plt.axis('off')
 plt.show()
 fig.savefig("word1.png", dpi=4000)
 
-#save_path = 'C:/Users/Nitin/Desktop/data_gathering'
-#completeName = os.path.join(save_path, wordcloud1+".png") 
-#file1 = open(completeName, "w")
-wordcloud_Venetian_pos.to_file('C:/Users/Nitin/Desktop/data_gathering/wordcloud_Venetian_pos.png')
+
+wordcloud_Venetian_allreview.to_file('C:/Users/Nitin/Desktop/data_gathering/wc_Venetian_allreview.png')
+wordcloud_Caesars_allreview.to_file('C:/Users/Nitin/Desktop/data_gathering/wc_Caesars_allreview.png')
+wordcloud_Wynn_allreview.to_file('C:/Users/Nitin/Desktop/data_gathering/wc_Wynn_allreview.png')
