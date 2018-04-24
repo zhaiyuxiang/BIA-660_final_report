@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 from subprocess import check_output
 from wordcloud import WordCloud, STOPWORDS
 
+
 mpl.rcParams['figure.figsize']=(8.0,6.0)    #(6.0,4.0)
 mpl.rcParams['font.size']=12                #10 
 mpl.rcParams['savefig.dpi']=100             #72 
