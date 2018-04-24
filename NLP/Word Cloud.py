@@ -7,11 +7,9 @@ import pandas as pd
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 #matplotlib inline
-import os.path
 
 from subprocess import check_output
 from wordcloud import WordCloud, STOPWORDS
-
 
 mpl.rcParams['figure.figsize']=(8.0,6.0)    #(6.0,4.0)
 mpl.rcParams['font.size']=12                #10 
